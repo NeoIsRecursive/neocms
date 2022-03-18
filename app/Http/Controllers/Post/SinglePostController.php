@@ -13,7 +13,7 @@ class SinglePostController extends Controller
     {
         $body =  Str::markdown($post->body);
 
-        return view('admin.post.show')->with('post', [
+        return view('post.show')->with('post', [
             'body' => $body,
             'author' => $post->author()
         ]);

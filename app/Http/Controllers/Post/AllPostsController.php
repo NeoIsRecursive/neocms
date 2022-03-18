@@ -15,8 +15,8 @@ class AllPostsController extends Controller
             'posts.id',
             'users.name as author',
             'posts.slug',
-        ])->join('users', 'author_id', 'users.id')->simplePaginate();
+        ])->join('users', 'author_id', 'users.id')->paginate();
 
-        return view('admin.post.all')->with('posts', $posts);
+        return view('post.all')->with('posts', $posts);
     }
 }
