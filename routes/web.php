@@ -26,15 +26,15 @@ Route::get('/posts', AllPostsController::class);
 Route::get('/post/{post:slug}', SinglePostController::class);
 
 Route::group(['middleware' => ['guest']], function () {
-    Route::view('/login', 'auth.login');
+    Route::view('/login', 'auth.login')->name('login');
     Route::post('/login', LoginController::class);
     Route::view('/register', 'auth.register');
     Route::post('/register', RegisterController::class);
-    Route::get('/logout', LogoutController::class);
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/admin', AdminController::class);
-    Route::view('/new_post', 'admin.post.new');
+    Route::get('/dashboard', AdminController::class);
+    Route::view('/new_post', 'post.new');
     Route::post('/new_post', NewPostController::class);
+    Route::get('/logout', LogoutController::class);
 });

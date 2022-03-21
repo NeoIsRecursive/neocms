@@ -23,6 +23,6 @@ class LoginController extends Controller
 
         Auth::attempt($validated);
 
-        return redirect('/admin');
+        return redirect('/dashboard');
     }
 }
