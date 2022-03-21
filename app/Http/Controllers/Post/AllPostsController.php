@@ -15,7 +15,8 @@ class AllPostsController extends Controller
             'posts.id',
             'users.name as author',
             'posts.slug',
-        ])->join('users', 'author_id', 'users.id')->paginate();
+            'posts.created_at',
+        ])->join('users', 'author_id', 'users.id')->orderByDesc('posts.created_at')->paginate();
 
         return view('post.all')->with('posts', $posts);
     }
