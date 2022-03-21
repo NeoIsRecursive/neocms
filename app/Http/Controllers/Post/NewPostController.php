@@ -12,14 +12,13 @@ class NewPostController extends Controller
 
     public function __invoke(Request $request)
     {
-        if ($request->slug !== '') {
-            $request->slug = str_replace([' ', '/'], '_', $request->slug);
-        }
+        $request['slug'] = str_replace([' ', '/'], '_', $request->slug);
 
         $request->validate([
             'slug' => ['required', 'unique:posts'],
-            'body' => 'required'
+            'body' => ['required']
         ]);
+
 
         $post = Post::create([
             'slug' => $request->slug,
