@@ -12,16 +12,20 @@ class NewPostController extends Controller
 
     public function __invoke(Request $request)
     {
-        $request['slug'] = str_replace([' ', '/'], '_', $request->slug);
-
+        $titleExists = preg_match('/(# )(.*)/', $request->body, $m);
+        if (!$titleExists) {
+            return back()->withErrors('you must have a title');
+        }
+        $m[0] = str_replace(['# ', "\r"], '', $m[0]);
+        $request['title'] = str_replace([' ', '/'], '_', $m[0]);
         $request->validate([
-            'slug' => ['required', 'unique:posts'],
+            'title' => ['required', 'unique:posts,slug'],
             'body' => ['required']
         ]);
 
 
         $post = Post::create([
-            'slug' => $request->slug,
+            'slug' => $request['title'],
             'body' => $request->body,
             'author_id' => Auth::id()
         ]);
