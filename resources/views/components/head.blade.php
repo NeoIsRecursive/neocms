@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body class="p-3 pt-0">
+<body class="p-3 pt-0" style="max-width:100vw;">
     <nav class="navbar nav-fill navbar-light">
         <h1 class="navbar-brand">
             {{ config('app.name') }}
