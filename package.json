@@ -1,7 +1,13 @@
 {
     "private": true,
     "scripts": {
+        "dev": "vite",
+        "build": "vite build"
     },
     "devDependencies": {
+        "vite": "^2.8.6"
+    },
+    "dependencies": {
+        "commonmark": "^0.30.0"
     }
 }
